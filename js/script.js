@@ -39,7 +39,7 @@ const inputValid = function (input) {
   const acceptedLetter = /[a-zA-Z]/;
   if (input.length === 0) {
   message.innerText = "Please enter a letter";
-  } else if (input.innerText > 1) {
+  } else if (input.length > 1) {
   message.innerText = "Please enter only one letter";
   } else if (!input.match(acceptedLetter)) {
   message.innerText = "Enter a letter from A to Z";
@@ -49,7 +49,7 @@ const inputValid = function (input) {
 };
 
 const makeGuess = function (guess) {
-  guess = guess.yoUpperCase();
+  guess = guess.toUpperCase();
   if (guessedLetters.includes(guess)) {
     message.innerText = "You already guessed that letter!";
   } else {
@@ -63,7 +63,7 @@ const makeGuess = function (guess) {
 
 //Lesson 3
 const showGuessedLetters = function () {
-  guessedLettersElement.innerText = "";
+  guessedLettersElement.innerHTML = "";
   for (const letter of guessedLetters) {
     const li = document.createElement("li");
     li.innerText = letter;
@@ -89,6 +89,6 @@ const updateWordProgess = function (guessedLetters) {
 const checkIfWin = function () {
   if (word.toUpperCase() === wordProgress.innerText) {
     message.classList.add("win");
-    message.innerText = `<p class="highlight">Youguess the correct word! You Win!</p>;
+    message.innerHTML = `<p class="highlight">Youguess the correct word! You Win!</p>;
    }
 };
