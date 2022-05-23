@@ -55,5 +55,40 @@ const makeGuess = function (guess) {
   } else {
     guessedLetters.push(guess);
     console.log(guessedLetters);
+    showGuessedLetters();
+    updateWordProgress(guessedLetters);
   }
+};
+
+
+//Lesson 3
+const showGuessedLetters = function () {
+  guessedLettersElement.innerText = "";
+  for (const letter of guessedLetters) {
+    const li = document.createElement("li");
+    li.innerText = letter;
+    guessedLettersElement.append(li);
+  }
+};
+
+const updateWordProgess = function (guessedLetters) {
+  const wordUpper = word.toUpperCase();
+  const wordArray = wordUpper.split("");
+  const revealWord = [];
+  for (const letter of wordArray) {
+    if (guessedLetters.includes(letter)) {
+      revealWord.push(letter.toUpperCase());
+    } else {
+      revealWord.push("●");
+    }
+  }
+  wordProgress.innerText = revealWord.join("");
+  checkIfWin();
+};
+
+const checkIfWin = function () {
+  if (word.toUpperCase() === wordProgress.innerText) {
+    message.classList.add("win");
+    message.innerText = `<p class="highlight">Youguess the correct word! You Win!</p>;
+   }
 };
