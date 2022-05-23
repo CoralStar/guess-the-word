@@ -17,3 +17,12 @@ const dots = function (word) {
   }
  wordProgress.innerText = dotsLetters.join("");
 };
+
+dots(word);
+
+guessedLettersButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  const guess = letterInput.value;
+  console.log(guess);
+  letterInput.value = "";
+});
