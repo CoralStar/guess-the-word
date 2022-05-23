@@ -17,18 +17,18 @@ const getWord = async function () {
   const wordArray = words.split("\n");
   const randomIndex = Math.floor(Math.random() * wordArray.length);
   word = wordArray[randomIndex].trim();
-  dots(word);
+  placeholder(word);
 };
 
 getWord();
 
-const dots = function (word) {
-  const dotsLetters = [];
+const placeholder = function (word) {
+  const placeholderLetters = [];
   for (const letter of word) {
-  //console.log(letter);
-  dotsLetters.push("●");
+    // console.log(letter);
+    placeholderLetters.push("●");
   }
- wordProgress.innerText = dotsLetters.join("");
+  wordInProgress.innerText = placeholderLetters.join("");
 };
 
 //dots(word);
@@ -38,7 +38,7 @@ guessedLettersButton.addEventListener("click", function (e) {
   message.innerText = "";
   const guess = letterInput.value;
   //console.log(guess);
-  const goodGuess = inputvalid(guess);
+  const goodGuess = inputValid(guess);
   
   if (goodGuess) {
     makeGuess(guess);
