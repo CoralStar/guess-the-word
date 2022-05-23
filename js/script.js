@@ -37,7 +37,7 @@ guessedLettersButton.addEventListener("click", function (e) {
 //Lesson 2
 const inputValid = function (input) {
   const acceptedLetter = /[a-zA-Z]/;
-  if (input.innerText === 0) {
+  if (input.length === 0) {
   message.innerText = "Please enter a letter";
   } else if (input.innerText > 1) {
   message.innerText = "Please enter only one letter";
