@@ -8,6 +8,7 @@ const message = document.QuerySelector(".message");
 const playAgainButton = document.QuerySelector(".play-again hide");
 
 const word = "magnolia";
+const guessedLetters = [];
 
 const dots = function (word) {
   const dotsLetters = [];
@@ -22,8 +23,14 @@ dots(word);
 
 guessedLettersButton.addEventListener("click", function (e) {
   e.preventDefault();
+  message.innerText = "";
   const guess = letterInput.value;
-  console.log(guess);
+  //console.log(guess);
+  const goodGuess = inputvalid(guess);
+  
+  if (goodGuess) {
+    makeGuess(guess);
+  }
   letterInput.value = "";
 });
 
@@ -39,4 +46,14 @@ const inputValid = function (input) {
   } else {
   return input;
   }
-}
+};
+
+const makeGuess = function (guess) {
+  guess = guess.yoUpperCase();
+  if (guessedLetters.includes(guess)) {
+    message.innerText = "You already guessed that letter!";
+  } else {
+    guessedLetters.push(guess);
+    console.log(guessedLetters);
+  }
+};
