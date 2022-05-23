@@ -134,16 +134,17 @@ const startOver = function () {
 };
 
 playAgainButton.addEventListener("click", function () {
-  message.classListremove("win");
+  // reset all original values - grab new word
+  message.classList.remove("win");
   guessedLetters = [];
   remainingGuesses = 8;
   remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
   guessedLettersElement.innerHTML = "";
   message.innerText = "";
-  
+  // Grab a new word
   getWord();
   
-  guessLettersButton.classList.remove("hide");
+  guessLetterButton.classList.remove("hide");
   playAgainButton.classList.add("hide");
   remainingGuessesElement.classList.remove("hide");
   guessedLettersElement.classList.remove("hide");
